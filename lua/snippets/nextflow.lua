@@ -72,4 +72,13 @@ include { PROCESS_1 as STEP_A; PROCESS_2 as STEP_B } from 'modules/local/module1
       "\n"
     )),
   }),
+  s("nxfshebang", {
+    t(vim.split(
+      [[
+#!/usr/bin/env nextflow
+
+]],
+      "\n"
+    )),
+  }),
 }
