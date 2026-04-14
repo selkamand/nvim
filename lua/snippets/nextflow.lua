@@ -61,4 +61,15 @@ process MY_PROCESS {
       "\n"
     )),
   }),
+  s("nxfinclude", {
+    t(vim.split(
+      [[
+include { PROCESS_1; PROCESS_2; PROCESS_3 } from 'modules/local/module1.nf'
+
+// With aliasing (recommended when reusing modules)
+include { PROCESS_1 as STEP_A; PROCESS_2 as STEP_B } from 'modules/local/module1.nf'
+]],
+      "\n"
+    )),
+  }),
 }
