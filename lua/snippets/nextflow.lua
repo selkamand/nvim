@@ -23,7 +23,7 @@ workflow {
 
     ch_out = PROCESS_1(ch_inputs)
 
-    emit:
+    publish:
     output1 = ch_out
 }
 
