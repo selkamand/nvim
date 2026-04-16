@@ -42,7 +42,7 @@ output {
     t(vim.split(
       [[
 process MY_PROCESS {
-    tag "{meta.id}"
+    tag "${meta.id}"
 
     input:
     tuple val(meta), path(input_file)
