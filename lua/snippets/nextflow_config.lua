@@ -16,29 +16,6 @@ process {
     time   = '4h'
 }
 
-timeline {
-    enabled = true
-    file    = "${params.outdir}/pipeline_info/timeline.html"
-    overwrite = true
-}
-
-report {
-    enabled = true
-    file    = "${params.outdir}/pipeline_info/report.html"
-    overwrite = true
-}
-
-dag {
-    enabled = true
-    file    = "${params.outdir}/pipeline_info/pipeline_dag.html"
-    overwrite = true
-}
-
-trace {
-    enabled = true
-    file    = "${params.outdir}/pipeline_info/trace.txt"
-    overwrite = true
-}
 
 profiles {
     docker {
@@ -93,6 +70,30 @@ profiles {
             time   = '1h'
         }
     }
+}
+
+timeline {
+    enabled = true
+    file    = "${params.outdir}/pipeline_info/timeline.html"
+    overwrite = true
+}
+
+report {
+    enabled = true
+    file    = "${params.outdir}/pipeline_info/report.html"
+    overwrite = true
+}
+
+dag {
+    enabled = true
+    file    = "${params.outdir}/pipeline_info/pipeline_dag.html"
+    overwrite = true
+}
+
+trace {
+    enabled = true
+    file    = "${params.outdir}/pipeline_info/trace.txt"
+    overwrite = true
 }
 ]],
       "\n"
