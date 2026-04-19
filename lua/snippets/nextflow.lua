@@ -1,6 +1,7 @@
 local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
+local i = ls.insert_node
 
 return {
   s("nxfmain", {
@@ -81,4 +82,47 @@ include { PROCESS_1 as STEP_A; PROCESS_2 as STEP_B } from './modules/local/modul
       "\n"
     )),
   }),
+  s(
+    "nxfparsesamplesheet",
+    fmt(
+      [[
+ch_{channel} = channel.fromPath({manifest})
+    // Read the manifest as CSV and expose each row as a map
+    .splitCsv(header: true)
+
+    // Convert each manifest row into the tuple structure expected downstream
+    .map {{ row ->
+        // Pull required columns out of the row
+        def sample = row.{sample_col} as String
+        def r1 = file(row.{r1_col} as String)
+        def r2 = file(row.{r2_col} as String)
+
+        // Validate required sample identifier
+        if (!sample) {{
+            error("Missing {sample_col} column in manifest row: ${{row}}")
+        }}
+
+        // Validate input files exist before running any processes
+        if (!r1.exists()) {{
+            error("File not found for sample ${{sample}}: ${{r1}}")
+        }}
+        if (!r2.exists()) {{
+            error("File not found for sample ${{sample}}: ${{r2}}")
+        }}
+
+        // Emit a standard tuple:
+        //   meta map first, then one or more files
+        // This is a common shape for DSL2 module inputs
+        tuple([id: sample], r1, r2)
+    }}
+]],
+      {
+        channel = i(1, "samples"),
+        manifest = i(2, "params.input"),
+        sample_col = i(3, "sample"),
+        r1_col = i(4, "r1"),
+        r2_col = i(5, "r2"),
+      }
+    )
+  ),
 }
