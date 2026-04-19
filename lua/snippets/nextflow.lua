@@ -38,7 +38,7 @@ output {
     )),
   }),
 
-  s("nxfmodule", {
+  s("nxfprocess", {
     t(vim.split(
       [[
 process MY_PROCESS {
