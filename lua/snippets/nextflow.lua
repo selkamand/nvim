@@ -13,7 +13,7 @@ params {
     outdir: Path = "results"
 }
 
-include { PROCESS_1; PROCESS_2 } from 'modules/local/module1.nf'
+include { PROCESS_1; PROCESS_2 } from './modules/local/module1.nf'
 
 workflow {
 
