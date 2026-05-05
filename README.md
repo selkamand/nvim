@@ -8,5 +8,9 @@ Based on the [LazyVim](https://github.com/LazyVim/LazyVim) starter template. Ref
 git clone https://github.com/selkamand/nvim.git ~/.config/nvim
 ```
 
+Also recommend compiling treesitter-cli so it gets linked to your system version of glibc
 
+```
+cargo install tree-sitter-cli
+```
 
