@@ -125,4 +125,75 @@ ch_{channel} = channel.fromPath({manifest})
       }
     )
   ),
+  s("nxftyped", {
+    t(vim.split(
+      [[
+nextflow.enable.types = true
+]],
+      "\n"
+    )),
+  }),
+  s("nxfworkflowtyped", {
+    t(vim.split(
+      [[
+nextflow.enable.dsl=2
+nextflow.enable.types = true
+
+workflow greet {
+    take:
+    greetings: Channel<String>
+
+    main:
+    messages = greetings.map { v -> "$v world!" }
+
+    emit:
+    messages: Channel<String>
+}
+]],
+      "\n"
+    )),
+  }),
+  s("nxfprocesstyped", {
+    t(vim.split(
+      [[
+nextflow.enable.types = true
+
+process FASTQC {
+    tag id
+    conda 'bioconda::fastqc=0.12.1'
+
+    input:
+    record(
+        id: String,
+        fastq_1: Path,
+        fastq_2: Path
+    )
+
+    output:
+    record(
+        id: id,
+        fastqc: file("fastqc_${id}_logs")
+    )
+
+    script:
+    """
+    fastqc.sh "${id}" "${fastq_1} ${fastq_2}"
+    """
+}
+]],
+      "\n"
+    )),
+  }),
+  s("nxfrecordtype", {
+    t(vim.split(
+      [[
+record FastqPair {
+    id: String
+    fastq_1: Path
+    fastq_2: Path
+}
+]],
+      "\n"
+    )),
+  }),
 }
