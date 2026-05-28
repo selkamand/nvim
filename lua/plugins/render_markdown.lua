@@ -5,6 +5,15 @@ return {
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
-  opts = {},
+  opts = {
+    win_options = {
+      -- See :h 'conceallevel'
+      conceallevel = {
+        -- Used when not being rendered, get user setting
+        default = 0,
+        -- Used when being rendered, concealed text is completely hidden
+        rendered = 0,
+      },
+    },
+  },
 }
-
