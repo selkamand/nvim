@@ -4,8 +4,8 @@ wk.setup({
 	preset = "helix"
 })
 
-wk.add(
-  -- group names
-  { "<leader>s", group = "Search" },
-  { "<leader>a", group = "Custom" }
-)
+wk.add({
+  { "<leader>s", name = "Search" },
+  { "<leader>d", name = "Diagnostics" },
+  { "<leader>a", name = "Custom" },
+})
