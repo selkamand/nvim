@@ -17,6 +17,10 @@ Install:
 - fd (find; for telescope plugin)
 - rg (ripgrep; for telescope plugin)
 
+Also recommend compiling treesitter-cli so it gets linked to your system version of glibc
+```
+cargo install tree-sitter-cli
+```
 Also see LSP section for how to install language servers
 
 ## Plugins
