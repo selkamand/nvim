@@ -15,8 +15,14 @@ vim.opt.cursorline = true
 -- Line wrapping
 vim.opt.wrap = true
 
+-- Tabs
+vim.opt.expandtab = true	-- expand tabs to spaces
+vim.opt.shiftwidth = 2 		-- indent step size (2 spaces)
+vim.opt.tabstop = 2		-- How many columns a literal tab char is treated as
+
 -- Smart indenting (aot-indent newlines in a context aware way)
 vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- Opt into new neovim UI 
 -- (improves commandline messages and pager: see https://neovim.io/doc/user/news-0.12/#_ui for details)
@@ -37,6 +43,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Select all
 vim.keymap.set("n", "<leader>aa", "ggVG", {desc = "Select all", noremap = true})
 vim.keymap.set("v", "<leader>aa", "ggVG", {desc = "Select all", noremap = true})
+
+-- Codetools
+vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open diagnostic", noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic", noremap = true, silent = true })
+vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic", noremap = true, silent = true })
 
 ----------------
 -- Plugins
