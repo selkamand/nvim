@@ -1,0 +1,44 @@
+{
+  "plugins": {
+    "LuaSnip": {
+      "rev": "642b0c595e11608b4c18219e93b88d7637af27bc",
+      "src": "https://github.com/L3MON4D3/LuaSnip",
+      "version": "'v2.5.0'"
+    },
+    "catppuccin": {
+      "rev": "605b4603797de970e9f3a4238c199c850da03186",
+      "src": "https://github.com/catppuccin/nvim",
+      "version": "'v2.0.0'"
+    },
+    "mason.nvim": {
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
+      "src": "https://github.com/mason-org/mason.nvim",
+      "version": "'v2.3.1'"
+    },
+    "nvim-treesitter": {
+      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "plenary.nvim": {
+      "rev": "50012918b2fc8357b87cff2a7f7f0446e47da174",
+      "src": "https://github.com/nvim-lua/plenary.nvim",
+      "version": "'v0.1.4'"
+    },
+    "rustaceanvim": {
+      "rev": "5a3a4158857ee1f7ec839b6ddd87cc0083a19c5f",
+      "src": "https://github.com/mrcjkb/rustaceanvim",
+      "version": "'v9.0.5'"
+    },
+    "telescope.nvim": {
+      "rev": "5255aa27c422de944791318024167ad5d40aad20",
+      "src": "https://github.com/nvim-telescope/telescope.nvim",
+      "version": "'v0.2.2'"
+    },
+    "which-key.nvim": {
+      "rev": "fcbf4eea17cb299c02557d576f0d568878e354a4",
+      "src": "https://github.com/folke/which-key.nvim",
+      "version": "'v3.17.0'"
+    }
+  }
+}
