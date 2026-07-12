@@ -25,6 +25,19 @@ Also see LSP section for how to install language servers
 
 ## Plugins
 
+**Adding a package:**
+
+All plugins are added in init.lua using the inbuilt `vim.pack.add`. `Package configs are in lua/plugins/<plugin>.lua`
+
+Note after you remove a package from init.lua you may also need to run:
+```
+:lua vim.pack.del({ "<package name>" })
+```
+
+To remove it from the `nvim-pack-lock.json`. On newer versions of nvim 
+you might eventually be able to just run `:packdel ++all` to cleanup all unused plugins.
+
+
 ### Treesitter 
 Treesitter will be installed, but to actually get parsers for the languages you care about you'll need to run something like:
 
