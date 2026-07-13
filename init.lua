@@ -55,7 +55,7 @@ vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { d
 vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic", noremap = true, silent = true })
 
 ----------------
--- Tmux Config
+-- Tmux Keymaps
 ----------------
 -- Configure tmux helper
 local tmux = require("config.tmux")
@@ -65,7 +65,14 @@ tmux.setup({
   press_enter = true
 })
 
---vim.keymap.set('x', "<leader>cc", function() tmux.send("Hello") end, {desc = "Send selection to tmux pane", noremap = true, silent = true})
+-- Send selection to tmux
+vim.keymap.set('v', "<leader>cc", function() tmux.send(tmux.visual_selection()) end, {desc = "Send selection to tmux", noremap = true, silent = true})
+
+-- Send current line to tmux
+vim.keymap.set('n', "<leader>cc", function() tmux.send(tmux.current_line()) end, {desc = "Send line to tmux", noremap = true, silent = true})
+
+-- Send full buffer to tmux
+vim.keymap.set({'n', 'v'}, "<leader>cb", function() tmux.send(tmux.entire_buffer()) end, {desc = "Send buffer to tmux", noremap = true, silent = true})
 
 ----------------
 -- Plugins
