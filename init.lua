@@ -93,7 +93,9 @@ vim.pack.add({
 	-- Rustaceanvim (custom lsp config for rust)
 	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v9.0.5" },
   -- Snacks (loads of QOL features)
-  { src = "https://github.com/folke/snacks.nvim", version = "v2.31.0"}
+  { src = "https://github.com/folke/snacks.nvim", version = "v2.31.0"},
+  -- Mini.ai  adds keybinds like vai (select around scope)
+  { src = "https://github.com/nvim-mini/mini.ai", version = "v0.18.0"}
 })
 
 

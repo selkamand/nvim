@@ -10,6 +10,11 @@
       "src": "https://github.com/catppuccin/nvim",
       "version": "'v2.0.0'"
     },
+    "mini.ai": {
+      "rev": "d73c36349aa7b0bab5f77ad71701a1d42211a1df",
+      "src": "https://github.com/nvim-mini/mini.ai",
+      "version": "'v0.18.0'"
+    },
     "mini.icons": {
       "rev": "e56797f90192d81f1fda02e662fc3e8e3d775027",
       "src": "https://github.com/nvim-mini/mini.icons",
