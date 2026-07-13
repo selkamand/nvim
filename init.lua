@@ -85,7 +85,6 @@ require("plugins.catppuccin")
 require("plugins.whichkey")
 require("plugins.luasnip")
 require("plugins.snacks")
--- require("plugins.telescope")
 
 ----------------
 -- LSPs
