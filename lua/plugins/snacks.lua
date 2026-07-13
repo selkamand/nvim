@@ -3,7 +3,13 @@ local Snacks = require("snacks")
 ---@type snacks.Config
 local opts = {
   bigfile = { enabled = true },
-  dashboard = { enabled = true },
+  dashboard = {
+    enabled = true,
+    sections = {
+      { section = "header" },
+      { section = "keys", gap = 1, padding = 1 },
+    },
+  },
   explorer = { enabled = true },
   indent = { enabled = true },
   input = { enabled = true },
@@ -47,9 +53,9 @@ local keys = {
   {
     "<leader><space>",
     function()
-      Snacks.picker.smart()
+      Snacks.picker.files()
     end,
-    desc = "Smart Find Files",
+    desc = "Find Files",
   },
   -- {
   --   "<leader>,",
@@ -82,14 +88,14 @@ local keys = {
 
   -- Find
   {
-    "<leader>fb",
+    "<leader>sb",
     function()
       Snacks.picker.buffers()
     end,
     desc = "Buffers",
   },
   {
-    "<leader>fc",
+    "<leader>sc",
     function()
       Snacks.picker.files({
         cwd = vim.fn.stdpath("config"),
@@ -98,28 +104,28 @@ local keys = {
     desc = "Find Config File",
   },
   {
-    "<leader>ff",
+    "<leader>sf",
     function()
       Snacks.picker.files()
     end,
     desc = "Find Files",
   },
   {
-    "<leader>fg",
+    "<leader>sG",
     function()
       Snacks.picker.git_files()
     end,
     desc = "Find Git Files",
   },
   {
-    "<leader>fp",
+    "<leader>sp",
     function()
       Snacks.picker.projects()
     end,
     desc = "Projects",
   },
   {
-    "<leader>fr",
+    "<leader>sr",
     function()
       Snacks.picker.recent()
     end,
@@ -229,13 +235,13 @@ local keys = {
     end,
     desc = "Autocmds",
   },
-  {
-    "<leader>sb",
-    function()
-      Snacks.picker.lines()
-    end,
-    desc = "Buffer Lines",
-  },
+  -- {
+  --   "<leader>sb",
+  --   function()
+  --     Snacks.picker.lines()
+  --   end,
+  --   desc = "Buffer Lines",
+  -- },
   {
     "<leader>sB",
     function()
@@ -243,13 +249,13 @@ local keys = {
     end,
     desc = "Grep Open Buffers",
   },
-  {
-    "<leader>sc",
-    function()
-      Snacks.picker.command_history()
-    end,
-    desc = "Command History",
-  },
+  -- {
+  --   "<leader>sc",
+  --   function()
+  --     Snacks.picker.command_history()
+  --   end,
+  --   desc = "Command History",
+  -- },
   {
     "<leader>sC",
     function()
@@ -337,15 +343,15 @@ local keys = {
 
   -- Snacks.picker.lazy() is specific to lazy.nvim.
   -- Search your Neovim configuration instead.
-  {
-    "<leader>sp",
-    function()
-      Snacks.picker.grep({
-        cwd = vim.fn.stdpath("config"),
-      })
-    end,
-    desc = "Search Config",
-  },
+  -- {
+  --   "<leader>sp",
+  --   function()
+  --     Snacks.picker.grep({
+  --       cwd = vim.fn.stdpath("config"),
+  --     })
+  --   end,
+  --   desc = "Search Config",
+  -- },
 
   {
     "<leader>sq",
