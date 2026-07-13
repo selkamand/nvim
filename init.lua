@@ -13,7 +13,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
 -- Line wrapping
-vim.opt.wrap = true
+vim.opt.wrap = false
 
 -- Tabs
 vim.opt.expandtab = true	-- expand tabs to spaces
@@ -44,11 +44,17 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set("n", "<leader>aa", "ggVG", {desc = "Select all", noremap = true})
 vim.keymap.set("v", "<leader>aa", "ggVG", {desc = "Select all", noremap = true})
 
+-- Editor Config Keybinds 
+-- Linewrapping
+vim.keymap.set("n", "<leader>ew", "<cmd>set wrap!<CR>", {desc = "Toggle line wrap", noremap = true})
+
 -- Codetools
 vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open diagnostic", noremap = true, silent = true })
 vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic", noremap = true, silent = true })
 vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic", noremap = true, silent = true })
 
+-- Send code to top right tmux pane
+vim.keymap.set("v", "<leader>cc", function() local s = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() }), "\n"); vim.fn.system({ "tmux", "load-buffer", "-" }, s); vim.fn.system({ "tmux", "paste-buffer", "-t", "{top-right}", ";", "send-keys", "-t", "{top-right}", "Enter" }) end, { desc = "Send selected to tmux", silent = true })
 ----------------
 -- Plugins
 ----------------
