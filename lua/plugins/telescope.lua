@@ -4,4 +4,5 @@ vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'Grep file content
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'Search buffers' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Search help tags' })
 vim.keymap.set('n', '<leader>ss', builtin.symbols, { desc = 'Search symbols' })
-vim.keymap.set('n', '<leader>ss', builtin.treesitter, { desc = 'Telescope document symbols' })
+vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = 'Telescope document symbols' })
+vim.keymap.set('n', '<leader>sd', '<cmd>Search diagnostics<CR>', { noremap = true, silent = true })
