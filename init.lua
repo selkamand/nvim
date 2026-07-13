@@ -99,6 +99,8 @@ require("plugins.telescope")
 -- then enable it below
 --
 -- Note you still have to install the language server tool manually (or via Mason, but we recommend manual installation). See the readme for instructions on how to install common language servers
+--
+-- Also note some of these will add keymaps (search plugin file for vim.keymap.set to see those keybinds)
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('nextflow_ls')
 vim.lsp.enable('r_language_server')
