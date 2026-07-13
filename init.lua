@@ -69,22 +69,23 @@ vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim", version = 'v3.17.0' },
 	-- Catpuccin Theme
 	{ src = "https://github.com/catppuccin/nvim", name = "catppuccin", version = "v2.0.0"  },
+	-- Mini icons (used by lots of downstream plugins including oil)
+	{ src = "https://github.com/nvim-mini/mini.icons", version = "v0.18.0"  },
 	-- Rustaceanvim (custom lsp config for rust)
 	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v9.0.5" },
-	-- Plenary (dependency of telescope)
-	{ src = "https://github.com/nvim-lua/plenary.nvim", version = "v0.1.4" },
-	-- Telescope (fuzzy finder)
-	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "v0.2.2" },
+  -- Snacks (loads of QOL features)
+  { src = "https://github.com/folke/snacks.nvim", version = "v2.31.0"}
 })
 
 
 -- CONFIGURE PLUGINS
 -- Some plugins require configuration which we do here, often by calling a configuration lua script
 -- from the lua/plugins directory
+require("plugins.catppuccin")
 require("plugins.whichkey")
 require("plugins.luasnip")
-require("plugins.catppuccin")
-require("plugins.telescope")
+require("plugins.snacks")
+-- require("plugins.telescope")
 
 ----------------
 -- LSPs
