@@ -3,7 +3,7 @@
 ----------------
 -- Set leader key
 vim.g.mapleader = " "
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = " "
 
 -- Add relative linenumbers
 vim.opt.number = true
@@ -37,6 +37,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+
 ----------------
 -- Keymaps (universal)
 ----------------
@@ -53,8 +54,19 @@ vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { 
 vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic", noremap = true, silent = true })
 vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic", noremap = true, silent = true })
 
--- Send code to top right tmux pane
-vim.keymap.set("v", "<leader>cc", function() local s = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos("."), { type = vim.fn.mode() }), "\n"); vim.fn.system({ "tmux", "load-buffer", "-" }, s); vim.fn.system({ "tmux", "paste-buffer", "-t", "{top-right}", ";", "send-keys", "-t", "{top-right}", "Enter" }) end, { desc = "Send selected to tmux", silent = true })
+----------------
+-- Tmux Config
+----------------
+-- Configure tmux helper
+local tmux = require("config.tmux")
+
+tmux.setup({
+  target = "{top-right}", -- which pane to send code to
+  press_enter = true
+})
+
+--vim.keymap.set('x', "<leader>cc", function() tmux.send("Hello") end, {desc = "Send selection to tmux pane", noremap = true, silent = true})
+
 ----------------
 -- Plugins
 ----------------
