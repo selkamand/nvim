@@ -3,13 +3,7 @@ local Snacks = require("snacks")
 ---@type snacks.Config
 local opts = {
   bigfile = { enabled = true },
-  dashboard = {
-    enabled = true,
-    sections = {
-      { section = "header" },
-      { section = "keys", gap = 1, padding = 1 },
-    },
-  },
+  dashboard = { enabled = false },
   explorer = { enabled = true },
   indent = { enabled = true },
   input = { enabled = true },
