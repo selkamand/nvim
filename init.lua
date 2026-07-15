@@ -43,7 +43,10 @@ vim.o.winborder = "rounded"
 -- Folding behaviour 
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter to identify folds
-
+vim.opt.foldtext = "getline(v:foldstart)"
+vim.opt.fillchars:append({
+  fold = " ",
+})
 ----------------
 -- Keymaps (universal)
 ----------------
