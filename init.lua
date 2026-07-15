@@ -44,8 +44,7 @@ vim.o.winborder = "rounded"
 -- Keymaps (universal)
 ----------------
 -- Select all
-vim.keymap.set("n", "<leader>aa", "ggVG", {desc = "Select all"})
-vim.keymap.set("v", "<leader>aa", "ggVG", {desc = "Select all"})
+vim.keymap.set("n", "<leader>aa", function() vim.cmd("normal! ggVG") end, { desc =  "Select all" } )
 
 -- Editor Config Keybinds 
 -- Linewrapping
