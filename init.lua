@@ -41,6 +41,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.o.winborder = "rounded"
 
 -- Folding behaviour 
+
+-- Enable folding, but initially show everything
+vim.opt.foldenable = true
+vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter to identify folds
 vim.opt.foldtext = "getline(v:foldstart)"
