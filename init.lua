@@ -148,7 +148,7 @@ vim.lsp.enable('r_language_server')
 
 
 ----------------
--- Filetypes
+-- Filetype Detection
 ----------------
 -- Filetype detection rules
 
@@ -159,7 +159,15 @@ vim.filetype.add({
   },
 })
 
+----------------
+-- Autoformat
+----------------
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rs",
+  callback = function()
+    -- Rustaceanvim provides :RustFmt and also sets up LSP formatting via rust-analyzer.
+    -- This will format using LSP (rust-analyzer) if available.
+    vim.lsp.buf.format({ async = false })
+  end,
+})
 
-----------------
--- autocomplete
-----------------
