@@ -44,17 +44,17 @@ vim.o.winborder = "rounded"
 -- Keymaps (universal)
 ----------------
 -- Select all
-vim.keymap.set("n", "<leader>aa", "ggVG", {desc = "Select all", noremap = true})
-vim.keymap.set("v", "<leader>aa", "ggVG", {desc = "Select all", noremap = true})
+vim.keymap.set("n", "<leader>aa", "ggVG", {desc = "Select all"})
+vim.keymap.set("v", "<leader>aa", "ggVG", {desc = "Select all"})
 
 -- Editor Config Keybinds 
 -- Linewrapping
-vim.keymap.set("n", "<leader>ew", "<cmd>set wrap!<CR>", {desc = "Toggle line wrap", noremap = true})
+vim.keymap.set("n", "<leader>ew", "<cmd>set wrap!<CR>", {desc = "Toggle line wrap"})
 
 -- Codetools
-vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open diagnostic", noremap = true, silent = true })
-vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic", noremap = true, silent = true })
-vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic", noremap = true, silent = true })
+vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open diagnostic" })
+vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
+vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
 
 ----------------
 -- Tmux Keymaps
