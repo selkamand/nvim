@@ -45,11 +45,7 @@ end
 local keys = {
   -- Top pickers and explorer
   {
-    "<leader><space>",
-    function()
-      Snacks.picker.files()
-    end,
-    desc = "Find Files",
+    "<leader><space>", function() Snacks.picker.files() end, desc = "Find Files",
   },
   -- {
   --   "<leader>,",
@@ -73,7 +69,7 @@ local keys = {
   --   desc = "Notification History",
   -- },
   {
-    "<leader>ee",
+    "<leader>e",
     function()
       Snacks.explorer()
     end,

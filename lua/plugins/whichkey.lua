@@ -12,5 +12,5 @@ wk.add({
   { "<leader>g", name = "Git" },
   { "<leader>e", name = "Editor" },
   { "<leader>a", name = "Custom" },
-  { "<leader>c", name = "Code", mode = "v" },
+  { "<leader>c", name = "Code", mode = { "v", "n" } } ,
 })

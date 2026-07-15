@@ -37,6 +37,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+-- Consistent borders for floating windows.
+vim.o.winborder = "rounded"
 
 ----------------
 -- Keymaps (universal)
@@ -94,6 +96,9 @@ vim.pack.add({
 	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v9.0.5" },
   -- Snacks (loads of QOL features)
   { src = "https://github.com/folke/snacks.nvim", version = "v2.31.0"},
+  -- Fast nice autocompletion
+  { src =  "https://github.com/saghen/blink.lib"} ,
+  { src =  "https://github.com/saghen/blink.cmp", version = "v1.10.2"},
   -- Mini.ai  adds keybinds like vai (select around scope)
   { src = "https://github.com/nvim-mini/mini.ai", version = "v0.18.0"}
 })
@@ -106,6 +111,7 @@ require("plugins.catppuccin")
 require("plugins.whichkey")
 require("plugins.luasnip")
 require("plugins.snacks")
+require("plugins.blink")
 
 ----------------
 -- LSPs
@@ -127,3 +133,21 @@ vim.lsp.enable('nextflow_ls')
 vim.lsp.enable('r_language_server')
 
 -- We do not have to add a rust lsp because rustaceanvim handles it for us
+
+
+----------------
+-- Filetypes
+----------------
+-- Filetype detection rules
+
+-- Nextflow
+vim.filetype.add({
+  extension = {
+    nf = "nextflow",
+  },
+})
+
+
+----------------
+-- autocomplete
+----------------

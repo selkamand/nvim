@@ -1,9 +1,12 @@
-local ls = require("luasnip")
+local luasnip = require("luasnip")
 
-local snippet_dir = vim.fn.stdpath("config") .. "/lua/snippets" -- string
--- print("snippet dir = " .. snippet_dir)
-
-require("luasnip.loaders.from_lua").load({
-  paths = { snippet_dir },  -- table of paths
-  include = ".*%.lua",
+luasnip.setup({
+  -- Enable this only if you use autosnippets.
+  enable_autosnippets = true,
 })
+
+require("luasnip.loaders.from_lua").lazy_load({
+  paths = { vim.fn.stdpath("config") .. "/lua/snippets" },
+})
+
+
