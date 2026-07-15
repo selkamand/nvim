@@ -4,6 +4,10 @@ local blink = require("blink.cmp")
 -- Requires Rust and Cargo to be installed.
 
 blink.setup({
+  snippets = {
+    preset = "luasnip",
+  },
+
   keymap = {
     -- Ctrl-y accepts a completion.
     preset = "enter",
