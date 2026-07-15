@@ -40,6 +40,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Consistent borders for floating windows.
 vim.o.winborder = "rounded"
 
+-- Folding behaviour 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter to identify folds
+
 ----------------
 -- Keymaps (universal)
 ----------------
