@@ -23,6 +23,11 @@
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
+    "gitsigns.nvim": {
+      "rev": "a462f416e2ce4744531c6256252dee99a7d34a83",
+      "src": "https://github.com/lewis6991/gitsigns.nvim",
+      "version": "'v2.1.0'"
+    },
     "mini.ai": {
       "rev": "d73c36349aa7b0bab5f77ad71701a1d42211a1df",
       "src": "https://github.com/nvim-mini/mini.ai",

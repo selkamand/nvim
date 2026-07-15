@@ -106,7 +106,9 @@ vim.pack.add({
   { src =  "https://github.com/saghen/blink.lib"} ,
   { src =  "https://github.com/saghen/blink.cmp", version = "v1.10.2"},
   -- Mini.ai  adds keybinds like vai (select around scope)
-  { src = "https://github.com/nvim-mini/mini.ai", version = "v0.18.0"}
+  { src = "https://github.com/nvim-mini/mini.ai", version = "v0.18.0"},
+  -- Gitsigns for git changes in gutter
+  { src = "https://github.com/lewis6991/gitsigns.nvim", version = "v2.1.0"}
 })
 
 
