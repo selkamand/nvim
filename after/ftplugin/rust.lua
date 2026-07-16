@@ -16,3 +16,6 @@ vim.keymap.set(
   end,
   { silent = true, buffer = bufnr }
 )
+
+-- Enable inlay hints
+vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
