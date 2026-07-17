@@ -19,8 +19,8 @@ local opts = {
   scroll = { enabled = true },
   statuscolumn = {
     enabled = true,
-    left = { "git", "mark", "sign" },
-    right = { "fold" },
+    left = { "git", "mark" },
+    right = { "sign", "fold" },
   },
   words = { enabled = true },
 

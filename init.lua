@@ -5,10 +5,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Add relative linenumbers
-vim.opt.number = true
-vim.opt.relativenumber = true
-
 -- Highlight current line
 vim.opt.cursorline = true
 
@@ -28,7 +24,22 @@ vim.opt.autoindent = true
 -- (improves commandline messages and pager: see https://neovim.io/doc/user/news-0.12/#_ui for details)
 require('vim._core.ui2').enable()
 
--- Highlight yanked text
+-- Rounded borders for floating windows.
+vim.o.winborder = "rounded"
+
+----------------
+-- Gutter Settings
+----------------
+-- Always show the signcolumn to prevent the screen from shifting when diagnostics appear
+vim.opt.signcolumn = "yes"
+
+-- Always show line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+----------------
+-- Yanking Settings
+----------------
 vim.api.nvim_create_augroup("highlight_yank", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = "highlight_yank",
@@ -37,11 +48,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Consistent borders for floating windows.
-vim.o.winborder = "rounded"
-
+----------------
 -- Folding behaviour 
-
+----------------
 -- Enable folding, but initially show everything
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
@@ -51,6 +60,39 @@ vim.opt.foldtext = "getline(v:foldstart)"
 vim.opt.fillchars:append({
   fold = " ",
 })
+
+----------------
+-- Diagnostics
+----------------
+-- Configure how diagnostics (Error messages and Warnings) be displayed
+vim.diagnostic.config({
+  virtual_text = {
+    -- show only on the line (inline) and not as a separate sign
+    spacing = 2,
+    prefix = "●",
+    -- show for all severities you care about (you can filter further)
+    severity = {
+      min = vim.diagnostic.severity.WARN, -- show WARN/ERROR/INFO/HINT as well
+    },
+    -- source = "if you want: lsp" (optional)
+	},
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = 'E',
+      [vim.diagnostic.severity.WARN] = 'W',
+    },
+    linehl = {
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+    },
+  },
+})
+
+-- Enable inlay hints 
+vim.lsp.inlay_hint.enable(true)
+
 ----------------
 -- Keymaps (universal)
 ----------------
@@ -62,9 +104,8 @@ vim.keymap.set("n", "<leader>aa", function() vim.cmd("normal! ggVG") end, { desc
 vim.keymap.set("n", "<leader>ew", "<cmd>set wrap!<CR>", {desc = "Toggle line wrap"})
 
 -- Codetools
-vim.keymap.set('n', '<leader>dd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open diagnostic" })
-vim.keymap.set('n', '<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { desc = "Go to previous diagnostic" })
-vim.keymap.set('n', '<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>', { desc = "Go to next diagnostic" })
+vim.keymap.set('n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = "Open diagnostic" })
+vim.keymap.set('n', "<leader>ca", '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc =  "Code action" } )
 
 ----------------
 -- Tmux Keymaps
@@ -80,8 +121,8 @@ tmux.setup({
 -- Send selection to tmux
 vim.keymap.set('v', "<leader>cc", function() tmux.send(tmux.visual_selection()) end, {desc = "Send selection to tmux", noremap = true, silent = true})
 
--- Send current line to tmux
-vim.keymap.set('n', "<leader>cc", function() tmux.send(tmux.current_line()) end, {desc = "Send line to tmux", noremap = true, silent = true})
+-- Send current line to tmux (and step down one line
+vim.keymap.set('n', "<leader>cc", function() tmux.send(tmux.current_line()) vim.cmd('normal! j'); end, {desc = "Send line to tmux", noremap = true, silent = true})
 
 -- Send full buffer to tmux
 vim.keymap.set({'n', 'v'}, "<leader>cb", function() tmux.send(tmux.entire_buffer()) end, {desc = "Send buffer to tmux", noremap = true, silent = true})
@@ -162,12 +203,13 @@ vim.filetype.add({
 ----------------
 -- Autoformat
 ----------------
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.rs",
-  callback = function()
-    -- Rustaceanvim provides :RustFmt and also sets up LSP formatting via rust-analyzer.
-    -- This will format using LSP (rust-analyzer) if available.
-    vim.lsp.buf.format({ async = false })
-  end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.rs",
+--   callback = function()
+--     -- Rustaceanvim provides :RustFmt and also sets up LSP formatting via rust-analyzer.
+--     -- This will format using LSP (rust-analyzer) if available.
+--     vim.lsp.buf.format({ async = false })
+--   end,
+-- })
+--
 
