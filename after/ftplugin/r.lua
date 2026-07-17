@@ -19,9 +19,9 @@ vim.keymap.set({ 'n', 'v' }, "<leader>cB", function() tmux.send("devtools::build
 
 -- Execute the entire script with Rscript 
 vim.keymap.set(
-  { 'n' }, "<leader>ce",
+  { 'n' }, "<leader>cR",
   function()
-    vim.cmd(utils.current_file_escaped())
+    vim.cmd(utils.current_filepath_escaped())
   end,
   {desc = "Rscript current file", noremap = true, silent = true})
 

@@ -1,8 +1,12 @@
-local bufnr = vim.api.nvim_get_current_buf()
+-- Tmux configuration
 local tmux = require("config.tmux")
-local config = tmux.setup({target="{top-right}", press_enter=true});
+local config = tmux.setup({ target = "{top-right}", press_enter = true })
+
+-- Utils
+local utils = require("config.utils")
 
 -- Enable inlay hints
+local bufnr = vim.api.nvim_get_current_buf()
 vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
 
@@ -20,22 +24,29 @@ vim.keymap.set(
 -- Rustaceanvim specific hover actions
 vim.keymap.set(
   "n",
-  "K",  -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
+  "K", -- Override Neovim's built-in hover keymap with rustaceanvim's hover actions
   function()
-    vim.cmd.RustLsp({'hover', 'actions'})
+    vim.cmd.RustLsp({ 'hover', 'actions' })
   end,
   { silent = true, buffer = bufnr }
 )
 
--- Cargo run current project
-vim.keymap.set({ 'n' }, "<leader>ce", function() tmux.send("cargo run", config) end, {desc = "Cargo run", noremap = true, silent = true })
-vim.keymap.set({ 'n' }, "<leader>cC",function() tmux.send("cargo check", config) end, {desc = "Cargo test", noremap = true, silent = true })
-vim.keymap.set({ 'n' }, "<leader>cT",function() tmux.send("cargo test", config) end, {desc = "Cargo test", noremap = true, silent = true })
-vim.keymap.set({ 'n' }, "<leader>cB",function() tmux.send("bacon", config) end, {desc = "Bacon", noremap = true, silent = true })
+-- Send cargo commands to tmux pane
+vim.keymap.set({ 'n' }, "<leader>cR", function() tmux.send("cargo run", config) end,
+  { desc = "Cargo run", noremap = true, silent = true })
+vim.keymap.set({ 'n' }, "<leader>cC", function() tmux.send("cargo check", config) end,
+  { desc = "Cargo test", noremap = true, silent = true })
+vim.keymap.set({ 'n' }, "<leader>cT", function() tmux.send("cargo test", config) end,
+  { desc = "Cargo test", noremap = true, silent = true })
+vim.keymap.set({ 'n' }, "<leader>cB", function() tmux.send("bacon", config) end,
+  { desc = "Bacon", noremap = true, silent = true })
+
+-- Run current example
+vim.keymap.set({ 'n' }, "<leader>ce",
+  function() tmux.send("cargo run --example " .. utils.current_filename_no_extension(), config) end,
+  { desc = "Run current example", noremap = true, silent = true })
 
 ---------------
 -- Rust formatting
 ----------------
-local rust_format_group =
-  vim.api.nvim_create_augroup("rust_format_on_save", { clear = true })
-
+-- Uses the default lsp format on save behaviour (see init.lua require("config.autoformat_on_save")
