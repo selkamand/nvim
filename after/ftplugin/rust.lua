@@ -33,11 +33,11 @@ vim.keymap.set(
 
 -- Send cargo commands to tmux pane
 vim.keymap.set({ 'n' }, "<leader>cR", function() tmux.send("cargo run", config) end,
-  { desc = "Cargo run", noremap = true, silent = true })
+  { desc = "Cargo Run", noremap = true, silent = true })
 vim.keymap.set({ 'n' }, "<leader>cC", function() tmux.send("cargo check", config) end,
-  { desc = "Cargo test", noremap = true, silent = true })
+  { desc = "Cargo Check", noremap = true, silent = true })
 vim.keymap.set({ 'n' }, "<leader>cT", function() tmux.send("cargo test", config) end,
-  { desc = "Cargo test", noremap = true, silent = true })
+  { desc = "Cargo Test", noremap = true, silent = true })
 vim.keymap.set({ 'n' }, "<leader>cB", function() tmux.send("bacon", config) end,
   { desc = "Bacon", noremap = true, silent = true })
 
