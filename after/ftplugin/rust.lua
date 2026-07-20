@@ -42,7 +42,7 @@ vim.keymap.set({ 'n' }, "<leader>cB", function() tmux.send("bacon", config) end,
   { desc = "Bacon", noremap = true, silent = true })
 
 -- Run current example
-vim.keymap.set({ 'n' }, "<leader>ce",
+vim.keymap.set({ 'n' }, "<leader>cE",
   function() tmux.send("cargo run --example " .. utils.current_filename_no_extension(), config) end,
   { desc = "Run current example", noremap = true, silent = true })
 
