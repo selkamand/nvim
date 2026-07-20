@@ -110,6 +110,8 @@ vim.keymap.set('n', '<leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', { 
 vim.keymap.set('n', "<leader>ca", '<cmd>lua vim.lsp.buf.code_action()<CR>', { desc = "Code action" })
 -- Rename Symbol under cursor (requires LSP rename support)
 vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end, { desc = "LSP: Rename symbol" })
+-- Run codelens command
+vim.keymap.set('n', "<leader>c.", function() vim.lsp.codelens.run() end, { desc = "Code lens" })
 
 ----------------
 -- Tmux Keymaps
@@ -198,6 +200,9 @@ vim.lsp.enable('r_language_server')
 
 -- Autoformat on save (LSP controls formatting)
 require("config.autoformat_on_save")
+
+-- Enable codelens (commands appearing near the code)
+vim.lsp.codelens.enable(true)
 
 ----------------
 -- Filetype Detection
