@@ -28,6 +28,11 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim",
       "version": "'v2.1.0'"
     },
+    "grug-far.nvim": {
+      "rev": "0f6a5d0d7a70659b11bbcd6b3673ee0fe61b6024",
+      "src": "https://github.com/MagicDuck/grug-far.nvim",
+      "version": "'1.6.75'"
+    },
     "mini.ai": {
       "rev": "d73c36349aa7b0bab5f77ad71701a1d42211a1df",
       "src": "https://github.com/nvim-mini/mini.ai",

@@ -164,7 +164,9 @@ vim.pack.add({
   -- Mini.ai  adds keybinds like vai (select around scope)
   { src = "https://github.com/nvim-mini/mini.ai",               version = "v0.18.0" },
   -- Gitsigns for git changes in gutter
-  { src = "https://github.com/lewis6991/gitsigns.nvim",         version = "v2.1.0" }
+  { src = "https://github.com/lewis6991/gitsigns.nvim",         version = "v2.1.0" },
+  -- Grug-Far for rg powered find and replace
+  { src = "https://github.com/MagicDuck/grug-far.nvim",         version = "1.6.75" }
 })
 
 
@@ -175,6 +177,7 @@ require("plugins.catppuccin")
 require("plugins.whichkey")
 require("plugins.luasnip")
 require("plugins.snacks")
+require("plugins.grugfar")
 require("plugins.blink")
 
 ----------------
