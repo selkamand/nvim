@@ -59,4 +59,32 @@ impl<{R}> Iterator for {Type}<{R}> {{
       }
     )
   ),
+  -- Docstring
+  s(
+    "rustdoc",
+    fmt(
+      [[
+/// {summary}
+///
+/// # Errors
+/// {errors}
+///
+/// # Panics
+/// {panics}
+///
+/// # Example
+/// ```
+/// {example}
+/// ```
+}}
+]],
+      {
+        summary = i(1, "Brief description of what this does"),
+        errors = i(2, "Describe when/why this function returns an error."),
+        panics = i(3, "Describe when/why this panics."),
+        example = i(4, "let x = /* ... */; /* ... */"),
+        name = i(5, "function_name"),
+      }
+    )
+  ),
 }
