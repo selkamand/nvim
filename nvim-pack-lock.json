@@ -5,6 +5,10 @@
       "src": "https://github.com/L3MON4D3/LuaSnip",
       "version": "'v2.5.0'"
     },
+    "R.nvim": {
+      "rev": "c56ebe0f8445e251673981c40ac2d74659ecd6ed",
+      "src": "https://github.com/R-nvim/R.nvim"
+    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
@@ -43,10 +47,25 @@
       "src": "https://github.com/nvim-mini/mini.icons",
       "version": "'v0.18.0'"
     },
+    "nvim-origami": {
+      "rev": "6527025fb8650fc4e813baea9f73e05182c00382",
+      "src": "https://github.com/chrisgrieser/nvim-origami",
+      "version": "'02312301df125908031b27dc556adb4cd81893d6'"
+    },
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
+    },
+    "nvim-ufo": {
+      "rev": "61463090a4f55f5d080236ea62f09d1cd8976ff3",
+      "src": "https://github.com/kevinhwang91/nvim-ufo",
+      "version": "'v1.5.0'"
+    },
+    "otter.nvim": {
+      "rev": "f4a033d4e2bd86d4f09386a73d3861538601253d",
+      "src": "https://github.com/jmbuhr/otter.nvim",
+      "version": "'v2.14.6'"
     },
     "rustaceanvim": {
       "rev": "5a3a4158857ee1f7ec839b6ddd87cc0083a19c5f",

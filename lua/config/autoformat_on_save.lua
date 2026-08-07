@@ -1,20 +1,20 @@
 -- This code sets up an autocommand to format on save
 -- The code was yoinked straight from the nvim help file (`help vim.lsp.buf.format`).
--- We have commented out the autocomplete setup since we use blink.cmp plugin for autocomplete instead
+-- We dropped the autocomplete setup  from the help docs since we use blink.cmp plugin for autocomplete instead
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(ev)
     local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
-    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-    -- if client:supports_method('textDocument/completion') then
-    --   -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-    --   -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-    --   -- client.server_capabilities.completionProvider.triggerCharacters = chars
-    --
-    --   vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
-    -- end
 
+    ---------------------------------
     -- Auto-format ("lint") on save.
+    ---------------------------------
+
+    -- Skip formatting for R files (the air lsp already adds an autoformat command on attach)
+    if vim.bo[ev.buf].filetype == 'r' then
+      return
+    end
+
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then

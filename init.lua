@@ -55,11 +55,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter to identify folds
-vim.opt.foldtext = "getline(v:foldstart)"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter to identify folds.
+vim.opt.foldtext = ""                                -- ensure fold is syntax highlighted
+
 vim.opt.fillchars:append({
   fold = " ",
 })
+
+-- Note for some filetypes (like r) we set foldexpr to use lsp folding instead of treesitter
+-- See ftplugin/r.lua for an example
+
+-- Also note we set the background colour of folded lines later in this script (after theme info is loaded)
+-- see the call to vim.api.nvim_set_hl
 
 ----------------
 -- Diagnostics
@@ -102,6 +109,8 @@ vim.keymap.set("n", "<leader>aa", function() vim.cmd("normal! ggVG") end, { desc
 -- Editor Config Keybinds
 -- Linewrapping
 vim.keymap.set("n", "<leader>ew", "<cmd>set wrap!<CR>", { desc = "Toggle line wrap" })
+vim.keymap.set("n", "<leader>e|", "<cmd>vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>e-", "<cmd>hsplit<CR>", { desc = "Horizontal split" })
 
 -- Codetools
 -- Open diagnostics
@@ -112,6 +121,12 @@ vim.keymap.set('n', "<leader>ca", '<cmd>lua vim.lsp.buf.code_action()<CR>', { de
 vim.keymap.set("n", "<leader>cr", function() vim.lsp.buf.rename() end, { desc = "LSP: Rename symbol" })
 -- Run codelens command
 vim.keymap.set('n', "<leader>c.", function() vim.lsp.codelens.run() end, { desc = "Code lens" })
+
+-- Open help in new vsplit
+local windowutils = require("config.windowutils")
+vim.keymap.set("n", "<leader>K", windowutils.hover_split, {
+  desc = "LSP hover in right split",
+})
 
 ----------------
 -- Tmux Keymaps
@@ -166,7 +181,10 @@ vim.pack.add({
   -- Gitsigns for git changes in gutter
   { src = "https://github.com/lewis6991/gitsigns.nvim",         version = "v2.1.0" },
   -- Grug-Far for rg powered find and replace
-  { src = "https://github.com/MagicDuck/grug-far.nvim",         version = "1.6.75" }
+  { src = "https://github.com/MagicDuck/grug-far.nvim",         version = "1.6.75" },
+  -- Otter for quarto
+  -- { src = "https://github.com/jmbuhr/otter.nvim",               version = "v2.14.6" }
+
 })
 
 
@@ -179,6 +197,13 @@ require("plugins.luasnip")
 require("plugins.snacks")
 require("plugins.grugfar")
 require("plugins.blink")
+-- require("plugins.otter")
+
+-- Change fold bg highlight colour
+vim.api.nvim_set_hl(0, "Folded", {
+  bg = "#1e2030",
+  bold = true,
+})
 
 ----------------
 -- LSPs
@@ -197,7 +222,9 @@ require("plugins.blink")
 -- Also note some of these will add keymaps (search plugin file for vim.keymap.set to see those keybinds)
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('nextflow_ls')
-vim.lsp.enable('r_language_server')
+-- vim.lsp.enable('r_language_server')
+vim.lsp.enable('r_raven')
+vim.lsp.enable('air') -- for formatting
 
 -- We do not have to add a rust lsp because rustaceanvim handles it for us
 

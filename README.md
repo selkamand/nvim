@@ -53,6 +53,8 @@ While modern neovim has an inbuilt snippet engine we still use the LuaSnip plugi
 
 ## LSPs
 
+### Lua
+
 `init.lua` LSP section has instructions for adding new LSP configs to neovim.
 
 We do not use mason as I refer manually installing the relevant language servers for complete control. 
@@ -69,12 +71,14 @@ arch:
 sudo pacman -S lua-language-server
 ```
 
-For [r_language_server](https://github.com/REditorSupport/languageserver):
+### R
 
-```
-install.packages("languageserver")
-```
+For the [r raven language server](https://github.com/jbearak/raven). 
+Note we use raven instead of r_language_server since I prefer its static analysis appraoch and the independence from a live R sessions.
 
+For R autoformatting use the [air](https://posit-dev.github.io/air/) language server.
+
+### Nextflow
 
 For [nextflow_ls](https://github.com/nextflow-io/language-server/releases):
 
@@ -98,7 +102,7 @@ EOF
 chmod +x ${directory}/nextflow-language-server
 ```
 
-For Rust:
+### Rust
 
 we use the rustaceanvim plugin which handles the lsp configuration for us. So you just need the standard rustanalyzer that comes with your rust installation.
 
