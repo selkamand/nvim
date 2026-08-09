@@ -223,7 +223,8 @@ vim.api.nvim_set_hl(0, "Folded", {
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('nextflow_ls')
 -- vim.lsp.enable('r_language_server')
-vim.lsp.enable('r_raven')
+-- vim.lsp.enable('r_raven')
+vim.lsp.enable('ry')  -- an R language server
 vim.lsp.enable('air') -- for formatting
 
 -- We do not have to add a rust lsp because rustaceanvim handles it for us
