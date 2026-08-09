@@ -106,6 +106,22 @@ chmod +x ${directory}/nextflow-language-server
 
 we use the rustaceanvim plugin which handles the lsp configuration for us. So you just need the standard rustanalyzer that comes with your rust installation.
 
+### Web development
+
+#### Typescript 
+
+```
+npm install -g typescript typescript-language-server
+```
+
+#### HTML 
+
+This command will also install a bunch of other vscode langservers including for json files
+
+```
+npm i -g vscode-langservers-extracted
+```
+
 ## Other info
 
 To understand the configuration start at [init.lua](./init.lua) and follow the requires.

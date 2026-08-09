@@ -226,6 +226,9 @@ vim.lsp.enable('nextflow_ls')
 -- vim.lsp.enable('r_raven')
 vim.lsp.enable('ry')  -- an R language server
 vim.lsp.enable('air') -- for formatting
+vim.lsp.enable('jsonls')
+vim.lsp.enable('html')
+vim.lsp.enable('ts_ls') -- typescript language server
 
 -- We do not have to add a rust lsp because rustaceanvim handles it for us
 
