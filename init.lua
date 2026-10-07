@@ -184,7 +184,6 @@ vim.pack.add({
   { src = "https://github.com/MagicDuck/grug-far.nvim",         version = "1.6.75" },
   -- Otter for quarto
   -- { src = "https://github.com/jmbuhr/otter.nvim",               version = "v2.14.6" }
-
 })
 
 
@@ -197,7 +196,6 @@ require("plugins.luasnip")
 require("plugins.snacks")
 require("plugins.grugfar")
 require("plugins.blink")
--- require("plugins.otter")
 
 -- Change fold bg highlight colour
 vim.api.nvim_set_hl(0, "Folded", {
@@ -222,15 +220,16 @@ vim.api.nvim_set_hl(0, "Folded", {
 -- Also note some of these will add keymaps (search plugin file for vim.keymap.set to see those keybinds)
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('nextflow_ls')
--- vim.lsp.enable('r_language_server')
+vim.lsp.enable('r_language_server')
 -- vim.lsp.enable('r_raven')
-vim.lsp.enable('ry')  -- an R language server
+-- vim.lsp.enable('ry')  -- an R language server
 vim.lsp.enable('air') -- for formatting
 vim.lsp.enable('jsonls')
 vim.lsp.enable('html')
 vim.lsp.enable('ts_ls') -- typescript language server
 
 -- We do not have to add a rust lsp because rustaceanvim handles it for us
+--- We do not have to add an R lsp because jet plugin handles it
 
 -- Autoformat on save (LSP controls formatting)
 require("config.autoformat_on_save")
