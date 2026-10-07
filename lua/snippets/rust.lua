@@ -6,6 +6,29 @@ local t = ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 
 return {
+  -- Test module snippet
+  s(
+    "testmod",
+    fmt(
+      [[
+#[cfg(test)]
+mod tests {{
+    use super::*;
+
+    #[test]
+    fn {name}() {{
+        assert_eq!({actual}, {expected});
+    }}
+}}
+]],
+      {
+        name = i(1, "test_add"),
+        actual = i(2, "add(1, 2)"),
+        expected = i(3, "3"),
+      }
+    )
+  ),
+
   -- impl Display snippet
   s(
     "disp",
