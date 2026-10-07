@@ -1,5 +1,5 @@
 # Neovim Configuration
-
+read
 A simple neovim configuration. 
 
 ## Setup 
@@ -73,8 +73,14 @@ sudo pacman -S lua-language-server
 
 ### R
 
-For the [r raven language server](https://github.com/jbearak/raven). 
-Note we use raven instead of r_language_server since I prefer its static analysis appraoch and the independence from a live R sessions.
+<!-- For the [r raven language server](https://github.com/jbearak/raven).  -->
+<!-- Note we use raven instead of r_language_server since I prefer its static analysis appraoch and the independence from a live R sessions. -->
+
+The classic R language server can be installed from CRAN with 
+
+```
+install.packages("languageserver")
+```
 
 For R autoformatting use the [air](https://posit-dev.github.io/air/) language server.
 
@@ -105,6 +111,11 @@ chmod +x ${directory}/nextflow-language-server
 ### Rust
 
 we use the rustaceanvim plugin which handles the lsp configuration for us. So you just need the standard rustanalyzer that comes with your rust installation.
+
+### Bash 
+
+The Bash LSP can be installed from npm with `npm i -g bash-language-server`.
+
 
 ### Web development
 

@@ -226,7 +226,8 @@ vim.lsp.enable('r_language_server')
 vim.lsp.enable('air') -- for formatting
 vim.lsp.enable('jsonls')
 vim.lsp.enable('html')
-vim.lsp.enable('ts_ls') -- typescript language server
+vim.lsp.enable('ts_ls')  -- typescript language server
+vim.lsp.enable('bashls') -- typescript language server
 
 -- We do not have to add a rust lsp because rustaceanvim handles it for us
 --- We do not have to add an R lsp because jet plugin handles it
