@@ -1,6 +1,9 @@
 --------------------------------------------
 -- Create R-Specific Configuartion
 --------------------------------------------
+-- Use Vim's R syntax groups so roxygen tags and prose can have separate colours.
+vim.bo.syntax = "r"
+
 -- Configure tmux helper
 local tmux = require("config.tmux")
 local utils = require("config.utils")
