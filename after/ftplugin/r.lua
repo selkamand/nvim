@@ -4,6 +4,11 @@
 -- Use Vim's R syntax groups so roxygen tags and prose can have separate colours.
 vim.bo.syntax = "r"
 
+-- Wrap text and show a subtle vertical guide at 80 columns
+-- (tidyverse style width, matches air's default line width).
+vim.opt_local.textwidth = 80
+vim.opt_local.colorcolumn = "80"
+
 -- Configure tmux helper
 local tmux = require("config.tmux")
 local utils = require("config.utils")
