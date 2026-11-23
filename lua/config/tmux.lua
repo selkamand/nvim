@@ -16,7 +16,7 @@ function M.setup(opts)
   config = vim.tbl_deep_extend("force", config, opts or {})
 end
 
----Send literal text to a tmux pane.
+---Paste text into a tmux pane.
 ---
 ---Uses the configured defaults unless overridden by `opts`.
 ---@param text string Text to send
@@ -36,17 +36,34 @@ function M.send(text, opts)
     press_enter = config.press_enter
   end
 
+  local buffer = "nvim-send-" .. vim.fn.getpid()
   local output = vim.fn.system({
     "tmux",
-    "send-keys",
+    "load-buffer",
+    "-b",
+    buffer,
+    "-",
+  }, text)
+
+  if vim.v.shell_error ~= 0 then
+    vim.notify(output, vim.log.levels.ERROR)
+    return
+  end
+
+  output = vim.fn.system({
+    "tmux",
+    "paste-buffer",
+    "-p",
+    "-r",
+    "-d",
+    "-b",
+    buffer,
     "-t",
     target,
-    "-l",
-    "--",
-    text,
   })
 
   if vim.v.shell_error ~= 0 then
+    vim.fn.system({ "tmux", "delete-buffer", "-b", buffer })
     vim.notify(output, vim.log.levels.ERROR)
     return
   end
