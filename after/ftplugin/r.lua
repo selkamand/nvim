@@ -4,6 +4,9 @@
 -- Use Vim's R syntax groups so roxygen tags and prose can have separate colours.
 vim.bo.syntax = "r"
 
+-- Continue R comments, including roxygen #', with Enter and o/O.
+vim.opt_local.formatoptions:append("ro")
+
 -- Wrap text and show a subtle vertical guide at 80 columns
 -- (tidyverse style width, matches air's default line width).
 vim.opt_local.textwidth = 80
@@ -60,8 +63,6 @@ vim.keymap.set({ 'n', 'x' }, "<leader>ct", function()
   end)
   tmux.send(('devtools::test_active_file(file = "%s")'):format(escaped_path))
 end, { desc = "Run current or matching R test file", buffer = true, noremap = true, silent = true })
-local undo_test_map = "lua vim.keymap.del({'n', 'x'}, '<leader>ct', { buffer = true })"
-vim.b.undo_ftplugin = vim.b.undo_ftplugin and (vim.b.undo_ftplugin .. " | " .. undo_test_map) or undo_test_map
 vim.keymap.set({ 'n', 'v' }, "<leader>cC", function() tmux.send("devtools::check(); ") end,
   { desc = "devtools::check()", noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, "<leader>cD", function() tmux.send("devtools::document(); ") end,
@@ -72,6 +73,16 @@ vim.keymap.set({ 'n', 'v' }, "<leader>cI", function() tmux.send("devtools::insta
   { desc = "devtools::install()", noremap = true, silent = true })
 vim.keymap.set({ 'v' }, "<leader>cV", function() tmux.send("View(" .. tmux.visual_selection() .. ")") end,
   { desc = "View selection", noremap = true, silent = true })
+
+vim.keymap.set('x', "<leader>cE", function()
+  local lines = vim.split(tmux.visual_selection(), "\n", { plain = true })
+  for index, line in ipairs(lines) do
+    lines[index] = line:gsub("^[ \t]*#'[ \t]?", "")
+  end
+  tmux.send(table.concat(lines, "\n"))
+end, { desc = "Send roxygen example to tmux", buffer = true, silent = true })
+local undo_maps = [[lua vim.keymap.del({'n', 'x'}, '<leader>ct', { buffer = true }); vim.keymap.del('x', '<leader>cE', { buffer = true })]]
+vim.b.undo_ftplugin = vim.b.undo_ftplugin and (vim.b.undo_ftplugin .. " | " .. undo_maps) or undo_maps
 
 -- Execute the entire script with Rscript
 vim.keymap.set(
